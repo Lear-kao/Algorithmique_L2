@@ -8,7 +8,7 @@ int n, n_feuille = 0;//n <= MAX_NOEUDS
 
 void saisie( int n )
 {
-    for(int i = 0; i < n; n++)
+    for(int i = 0; i < n; i++)
     {
         printf("entrer papa noeud %d stp",i);
         scanf("%d",&(papa[i]));
@@ -47,7 +47,7 @@ int monter_arbre( int f )
     while( papa[f] != -1)
     {
         h ++;
-        f = papa[f]
+        f = papa[f];
     }
     return h;
 }
@@ -57,7 +57,7 @@ int hauteur_arbre( void )
     int max = 0;
     for  (int i = 0; i < n_feuille ; i++)
     {
-        int temp = monter_arbre( feuille[i] )
+        int temp = monter_arbre( feuille[i] );
         if  ( temp > max )
         {
             max = temp;
@@ -72,7 +72,7 @@ int main( void )
     printf("rentrer le nombre de noeuds \n");
     scanf("%d",&n);
     saisie(n);
-    n_feuille = feuille_arbre(n);
+    feuille_arbre(n);
     int d = hauteur_arbre();
     printf("%d",d);
     return  0;
