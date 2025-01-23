@@ -1,0 +1,17 @@
+TD Arbre et  algorithme:
+
+Exercice 1:
+
+R(1)
+-------	n(6)
+	-------	n(10)
+	-------	n(9)
+-------	n(5)
+	-------	n(8)
+	-------	n(7)
+-------	n(2)
+	-------	n(4)
+		-------	n(11)
+		-------	n(12)
+	-------	n(3)
+Preuve: Chaque noeud est pointé par  un seul arc sauf  la  racine.
