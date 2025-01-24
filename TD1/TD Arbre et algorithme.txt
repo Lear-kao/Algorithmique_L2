@@ -3,17 +3,17 @@ TD Arbre et  algorithme:
 Exercice 1:
 
 R(1)
----	n(6)
-	---	n(10)
-	---	n(9)
----	n(5)
-	---	n(8)
-	---	n(7)
----	n(2)
-	---	n(4)
-		---	n(11)
-		---	n(12)
-	---	n(3)
+-------	n(6)
+	-------	n(10)
+	-------	n(9)
+-------	n(5)
+	-------	n(8)
+	-------	n(7)
+-------	n(2)
+	-------	n(4)
+		-------	n(11)
+		-------	n(12)
+	-------	n(3)
 N = nombre de noeuds = 12
 M = nombre d'arcs = 11 = N - 1
 Preuve: Chaque noeud est pointé par  un seul arc sauf  la  racine.
@@ -34,8 +34,17 @@ log[d](x) = log[2](x) * log[d](2) = log[2](x)/log[2](d)
 
 
 Exercice 3: avec exemple 1
-				0 1 2 3 4 5 6 7 8 9 10 11
+		0 1 2 3 4 5 6 7 8 9 10 11
 tab de papa : [-1,0,1,1,0,0,4,4,5,5,3, 3]
 i est une feuille si et seulement si papa[k] != i \-/ K
 
-Exercice 4: Arbre = tableau de pointeur
+output : feuille[2,10,11,6,7,8,9], nf = nombre de feuille
+hauteur de l'arbre: Montez dans l'arbre à partir de chaque feuille et trouver la distance la  plus longue.
+h2 = 2
+h10 = 3
+h11 = 3
+h6 = 2
+h7 = 2
+h8 = 2
+h9 = 2
+
