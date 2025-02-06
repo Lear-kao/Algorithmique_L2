@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdilib.h> //pour qsort
+#include <stdlib.h> //pour qsort
 /* 
 Ecrire une fonction pour créer un BST parfaitement équilibré.
 Illustrons l'algo par  un exemple.
@@ -41,7 +41,7 @@ Divide and conquer
 */
 {
     if (debut > fin) return NULL;
-    int millieu = (debut+fin)/2:
+    int millieu = (debut+fin)/2;
     lien racine = creerNoeud(t[millieu]);
     racine->left = bstPE(t,debut,millieu+1);
     racine->right = bstPE(t,millieu+1,fin);
@@ -50,20 +50,20 @@ Divide and conquer
 
 //qsort(t, taille_t,sizeof(int),compare)
 //ecrivons la fonction compare
-int compare(int a, int b)
+int compare(int *a, int *b)
 {
-    return  a* - b*;
+    return  *a - *b;
 }
 
 
-void printTree( link r, int niveau)
+void printTree( lien r, int niveau)
 {
     if( r!= NULL )
     {
-    imprimer_arbre( r->droit, niveau+1);
+    printTree( r->right, niveau+1);
     for(int i = 0; i < niveau; i++) printf("   ");
     printf("%d\n", r->info);
-    imprimer_arbre(r->gauche, niveau + 1);
+    printTree(r->left, niveau + 1);
     }
 }
 
