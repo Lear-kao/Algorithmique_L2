@@ -67,6 +67,20 @@ void printTree( lien r, int niveau)
     }
 }
 
+lien insertion(  lien racine, int info)
+/*
+inserer une feuille dans un bst
+*/
+{
+    if (racine == NULL) racine = creerNoeud(info);
+    else
+    {
+        if(info < racine-> info) racine->left = insertion( racine->left, info);
+        else if (info > racine->info)) racine -> right = inserton(racine->right, info);
+    }
+    return racine;
+}
+
 int main( void )
 {
     int n; //le nombre d'entier du tableau
@@ -81,6 +95,11 @@ int main( void )
     }
     qsort(t,n,sizeof(int),compare);
     lien racine = bstPE(t,0,n-1);
+    printTree(racine,0);
+
+    int x;
+    scanf("%n",&x);
+    insertion(racine, x);
     printTree(racine,0);
     return 0;
 }
