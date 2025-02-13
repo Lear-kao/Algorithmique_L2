@@ -3,37 +3,43 @@
 #include "../headers/headrs_fils.h"
 
 
-File* enfiler(File *f,int i)
+link enfiler(link *head, link *tail,int i)
 {
-    File *tmp;
+    link tmp = (link)malloc(sizeof(noeud));
+    t->info = i;
+    t->next = NULL;
     if(f==NULL)
     {
-        f=(File*)malloc(sizeof(File));
-        f->info=i;
-        f->next=NULL;
-    }
-    else{
-        tmp=f;
-        while(tmp->next!=NULL)
+        if (head == NULL)
         {
-            tmp=tmp->next;
+            *head = t;
+            *tail = t;
         }
-        tmp->next=(File*)malloc(sizeof(File));
-        tmp->next->info=i;
+    }
+    else
+    {
+        tail->next = t;
+        tail = t;
     }
     return f;
 }
 
-noeud* defiler(File *f ,int *r)
-{ // *r est un pointeur vers une variable pour stocker la valeur defiler
-    *r=f->info;
-    File *tmp=f;
-    tmp=tmp->next;
-    free(f);
-    return tmp;
+int defiler(link noeud ,link r)
+/* 
+*r est un pointeur vers une variable pour stocker le pointeur
+*/
+{ 
+    if (head !=  NULL)
+    {
+        int 
+    }
+    int temp = noeud->info;
+    r = noeud->next;
+    free(noeud);
+    return temp;
 }
 
-int file_vide(noeud *f)
+int file_vide(link f)
 {
     if(f==NULL)
     {
@@ -46,21 +52,21 @@ int file_vide(noeud *f)
 
 
 /*creer noeud avec l'info donné*/
-enfant* creer_noeud(int info)
+link creer_noeud(int info)
 {
-enfant *temp = (enfant*)malloc(sizeof(enfant));
-temp -> val = info;
-temp -> suiv = NULL;
-return temp;
+    enfant *temp = (enfant*)malloc(sizeof(enfant));
+    temp -> info = info;
+    temp -> next = NULL;
+    return temp;
 }
 
-void saisie_dEnfant( void )
+void saisie_dEnfant( int n,  link *fils )
 {
-    enfant  *temp;
+    link temp;
     int ne;
 
     /*initialisation de tab*/
-    for  (int i = 0; i < n; i++)fils[i] = NULL;
+    for  (int i = 0; i < n; i++) fils[i] = NULL;
 
     //saisie des enfants de chaque noeuds
     for(int i = 0;i < n; i++)
@@ -75,24 +81,39 @@ void saisie_dEnfant( void )
             //on stocke e
             temp = creer_noeud(e);
             //attacher les  enfants à temp et temp à la tête
-            temp->suiv = fils[i];
+            temp->next = fils[i];
             fils[i] = temp;
         
         }
     }
 }
 
-void imprimmer__enfant( void )
+void imprimmer__enfant( int n,  link *fils )
 {
-    enfant *temp;
+    link temp;
     for( int i = 0; i < n; i++)
     {
         temp = fils[i];
-        if ( fils[i] = NULL ) return;
+        if ( fils[i] == NULL ) return;
         else 
         {
-            for( ; temp !=  NULL; temp = temp->suiv ) printf("%d,", temp->val );
+            for( ; temp !=  NULL; temp = temp->next ) printf("%d,", temp->info );
             printf("\n");
         } 
     }
 }
+
+int max( int *list, int n)
+{
+    int max = list[0];
+    for( int i = 1; i < n; i++)
+    {
+        if (max < list[i])
+        {
+            max = list[i];
+        }
+    }
+    return max;
+}
+
+

@@ -4,23 +4,24 @@
 //structure
 typedef struct noeud
 {
-    struct noeud *suiv;
-    int val;
+    struct noeud *next;
+    int info;
 }enfant;
 
-typedef noeud* link;
+typedef enfant *link;
+
 
 //fonction générale
-noeud* enfiler(File *f,int i);
-noeud* defiler(File *f ,int *r);
-int file_vide(noeud *f);
-enfant* creer_noeud(int info);
-void saisie_dEnfant( void );
-void imprimmer__enfant( void );
-
+link enfiler(link f,int i);
+int defiler(link noeud ,link r);
+int file_vide(link f);
+link creer_noeud(int info);
+void saisie_dEnfant( int n,  link *fils );
+void imprimmer__enfant( int n, link *fils);
+int max(int *list, int n);
 
 //TD2
-void bfs( int i );
+void bfs( int i, link *fils, int n );
 
 
 
