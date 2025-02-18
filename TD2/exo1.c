@@ -40,11 +40,11 @@ A est représenté par les listes de ses enfants.
     link head;
     link tail;
     enfiler(&head,&tail,i);
-    while( tete != NULL)
+    while( head != NULL)
     {
         int j = defiler(&head,&tail);
         //enfiler tout les enfants de j. Les fils sont déja saisies
-        for ( link t = fils[j]; t!= NULL; t = t->suiv)
+        for ( link t = fils[j]; t!= NULL; t = t->next)
         {
             enfiler(&head,&tail,t->info);
             l[t->info] = l[j]+1; //niveaud'un noeud = niveau deson papa + 1
@@ -70,7 +70,7 @@ A est représenté par les listes de ses enfants.
 
 int main( void )
 {
-    link *list[11];
+    link list[11];
     saisie_dEnfant(11,list);
     bfs(1,list,11);
     return 0;

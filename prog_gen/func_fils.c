@@ -5,37 +5,40 @@
 
 link enfiler(link *head, link *tail,int i)
 {
-    link tmp = (link)malloc(sizeof(noeud));
-    t->info = i;
-    t->next = NULL;
-    if(f==NULL)
+    link tmp = (link)malloc(sizeof(enfant));
+    tmp->info = i;
+    tmp->next = NULL;
+    if (head == NULL)
     {
-        if (head == NULL)
-        {
-            *head = t;
-            *tail = t;
-        }
+        (*head) = tmp;
+        (*tail) = tmp;
     }
     else
     {
-        tail->next = t;
-        tail = t;
+        (*tail)->next = tmp;
+        (*tail) = tmp;
     }
-    return f;
+    return tmp;
 }
 
-int defiler(link noeud ,link r)
+int defiler(link *head ,link *tail)
 /* 
 *r est un pointeur vers une variable pour stocker le pointeur
 */
 { 
+    int temp;
     if (head !=  NULL)
     {
-        int 
+        temp = (*head)->info;
+        link a = (*head);
+        *(head) = (*head)->next;
+        free(a);   
     }
-    int temp = noeud->info;
-    r = noeud->next;
-    free(noeud);
+    else
+    {
+        printf("file vide\n");
+        return 0;
+    }
     return temp;
 }
 

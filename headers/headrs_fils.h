@@ -12,8 +12,8 @@ typedef enfant *link;
 
 
 //fonction générale
-link enfiler(link f,int i);
-int defiler(link noeud ,link r);
+link enfiler(link *head, link *tail,int i);
+int defiler(link *head, link *tail);
 int file_vide(link f);
 link creer_noeud(int info);
 void saisie_dEnfant( int n,  link *fils );
