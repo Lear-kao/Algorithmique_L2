@@ -37,6 +37,8 @@ arbre_bin *insertion( arbre_bin *racine, int info);
 
 //TD2
 void bfs( int i, link *fils, int n );
+arbre_bin *search_it(arbre_bin *root, int data);
+arbre_bin *search(arbre_bin *root, int data);
 
 
 

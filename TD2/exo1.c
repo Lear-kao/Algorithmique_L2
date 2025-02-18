@@ -86,7 +86,7 @@ Recherche  de data dans un  arbre  binaire de recherchede manière récursive
     return NULL;
 }
 
-arbre_bin *search(arbre_bin *root, int data)
+arbre_bin *search_it(arbre_bin *root, int data)
 /* 
 Recherche  de data dans un  arbre  binaire de recherchede manière récursive
 */
