@@ -68,6 +68,45 @@ A est représenté par les listes de ses enfants.
 
 }
 
+arbre_bin *search(arbre_bin *root, int data)
+/* 
+Recherche  de data dans un  arbre  binaire de recherchede manière récursive
+*/
+{
+    if( root -> info == data)
+    {
+        return root;
+    }
+    if (data > root -> info )
+    {
+        search( root -> right, data );
+    }
+    else 
+        search( root -> left, data );
+    return NULL;
+}
+
+arbre_bin *search(arbre_bin *root, int data)
+/* 
+Recherche  de data dans un  arbre  binaire de recherchede manière récursive
+*/
+{
+    while( root != NULL )
+    {
+        if( root -> info == data)
+        {
+            return root;
+        }
+        if (data > root -> info )
+        {
+            root = root -> right;
+        }
+        else 
+            root = root -> left;
+    }
+    return NULL;
+}
+
 int main( void )
 {
     link list[11];

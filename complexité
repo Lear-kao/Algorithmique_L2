@@ -1,0 +1,103 @@
+## Leçon : La Complexité en Informatique 
+
+La complexité en informatique est une mesure de la quantité de ressources nécessaires pour exécuter un algorithme. Ces ressources peuvent inclure le temps de calcul, la mémoire, la bande passante ou d'autres facteurs pertinents selon le contexte. Comprendre la complexité algorithmique est essentiel pour concevoir des solutions efficaces et scalables.
+
+### 1. Types de Complexité
+
+Il existe principalement plusieurs types de complexité :
+
+- **Complexité temporelle** : mesure le temps d'exécution d'un algorithme en fonction de la taille de l'entrée.
+- **Complexité spatiale** : mesure la quantité de mémoire utilisée par un algorithme en fonction de la taille de l'entrée.
+- **Complexité en termes d'opérations élémentaires** : compte le nombre d'opérations de base effectuées.
+- **Complexité en communication** : mesure la quantité de données échangées dans un système distribué.
+- **Complexité énergétique** : évalue la consommation d'énergie d'un algorithme.
+
+### 2. Notations Asymptotiques
+
+Les notations asymptotiques permettent de décrire la complexité d'un algorithme de manière indépendante de la machine utilisée. Les principales notations sont :
+
+- **O (Grand O)** : borne supérieure, décrit la croissance maximale.
+- **Ω (Omega)** : borne inférieure, décrit la croissance minimale.
+- **Θ (Thêta)** : borne moyenne, décrit une croissance moyenne.
+
+### 3. Exemples d'Algorithmes et de Complexité
+
+#### Exemples de complexité temporelle :
+
+- **Algorithme de recherche linéaire** : O(n)
+- **Algorithme de tri par sélection** : O(n²)
+- **Algorithme de tri rapide (quick sort)** : O(n log n) en moyenne
+- **Algorithme de recherche binaire** : O(log n)
+- **Algorithme de Fibonacci récursif** : O(2^n)
+
+#### Exemple concret : Recherche d'un élément dans un tableau
+
+**Recherche linéaire** :
+```python
+# Recherche linéaire dans une liste
+def recherche_lineaire(liste, cible):
+    for i, element in enumerate(liste):
+        if element == cible:
+            return i
+    return -1
+
+liste = [1, 3, 5, 7, 9]
+print(recherche_lineaire(liste, 5))  # Retourne 2
+```
+Complexité : O(n), où n est la taille de la liste.
+
+**Recherche binaire (sur une liste triée)** :
+```python
+# Recherche binaire dans une liste triée
+def recherche_binaire(liste, cible):
+    gauche, droite = 0, len(liste) - 1
+    while gauche <= droite:
+        milieu = (gauche + droite) // 2
+        if liste[milieu] == cible:
+            return milieu
+        elif liste[milieu] < cible:
+            gauche = milieu + 1
+        else:
+            droite = milieu - 1
+    return -1
+
+liste = [1, 3, 5, 7, 9]
+print(recherche_binaire(liste, 5))  # Retourne 2
+```
+Complexité : O(log n), beaucoup plus efficace que la recherche linéaire pour les grandes listes triées.
+
+**Algorithme de Fibonacci récursif** :
+```python
+# Calcul de Fibonacci de manière récursive
+def fibonacci(n):
+    if n <= 1:
+        return n
+    return fibonacci(n-1) + fibonacci(n-2)
+
+print(fibonacci(10))  # Retourne 55
+```
+Complexité : O(2^n), très coûteuse pour de grandes valeurs de n.
+
+### 4. Méthodes d'Analyse de la Complexité
+
+Pour analyser la complexité d'un programme, on suit généralement les étapes suivantes :
+
+1. **Identification des opérations dominantes** : Repérer les instructions ayant le plus d'impact sur le temps d'exécution.
+2. **Comptage des opérations** : Déterminer combien de fois chaque opération est exécutée.
+3. **Utilisation des notations asymptotiques** : Simplifier l'expression obtenue en utilisant les notations O, Ω et Θ.
+4. **Évaluation pratique** : Tester l'algorithme avec différentes tailles d'entrée pour confirmer les résultats théoriques.
+
+### 5. Considérations Pratiques
+
+La complexité théorique ne suffit pas toujours. En pratique, on doit tenir compte de :
+- L'architecture matérielle
+- Les optimisations du compilateur
+- La nature des données d'entrée (meilleur, moyen et pire cas)
+
+### 6. Importance de la Complexité
+
+Optimiser un algorithme permet d'améliorer les performances, réduire les coûts d'infrastructure et offrir une meilleure expérience utilisateur. Une bonne compréhension de la complexité algorithmique est donc indispensable pour tout informaticien.
+
+---
+**Résumé** : La complexité en informatique est un outil fondamental pour évaluer et améliorer les algorithmes. Comprendre les notations asymptotiques, les différents types de complexité et les algorithmes courants permet de développer des solutions efficaces et adaptées aux besoins réels.
+
