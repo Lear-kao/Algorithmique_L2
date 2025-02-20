@@ -55,7 +55,7 @@ int file_vide(link f)
 
 
 /*creer noeud avec l'info donné*/
-link creer_noeud(int info)
+link creerNoeudArbreQuelquonque(int info)
 {
     enfant *temp = (enfant*)malloc(sizeof(enfant));
     temp -> info = info;

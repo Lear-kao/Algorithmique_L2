@@ -107,8 +107,59 @@ Recherche  de data dans un  arbre  binaire de recherchede manière récursive
     return NULL;
 }
 
+link find_max( arbre_bin *t )
+{
+    while( t->right != NULL)
+    {
+        t = t->right;
+    }
+    return t;
+}
+
+arbre_bin *supp( arbre_bin *root, int x)
+{
+    if (root == NULL)
+    {
+        return NULL;
+    }
+    if( x < root->info )
+    {
+        return supp( root->left, x )
+    }
+    else if( x > root->info )
+    {
+        return( root->right, x );
+    }
+    if( root -> left == NULL )
+    {
+        arbre_bin *temp = root->right;
+        free(root);
+        return temp;
+    }
+    else if( root-> right == NULL )
+    {
+        arbre_bin *temp = root->left;
+        free(root);
+        return temp;
+    }
+    else
+    {
+        arbre_bin *temp = find_max(root->left);
+        root->info = temp->info;
+        return supp(root->info, temp->info);
+    }
+}
+
 int main( void )
 {
+    arbre_bin *root = creerNoeudArbreBinaire(50);
+    root->g = creerNoeudArbreBinaire(40);
+    root->d = creerNoeudArbreBinaire(60);
+    root->g->g = creerNoeudArbreBinaire(30);
+    root->g->d = creerNoeudArbreBinaire(45);
+    root->d->g = creerNoeudArbreBinaire(55);
+    root->d->d = creerNoeudArbreBinaire(65);
+    root->g->d->d = creerNoeudArbreBinaire(47);
     link list[11];
     saisie_dEnfant(11,list);
     bfs(1,list,11);

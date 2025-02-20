@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "../headers/headrs_fils.h"
 
-arbre_bin *creerNoeud(int info)
+arbre_bin *creerNoeudArbreBinaire(int info)
 {
     arbre_bin *temp = malloc(sizeof(arbre_bin));
     temp->info = info;
