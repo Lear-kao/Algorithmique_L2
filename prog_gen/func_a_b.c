@@ -30,7 +30,7 @@ inserer une feuille dans un bst
 */
 {
     if (racine == NULL)
-        racine = creerNoeud(info);
+        racine = creerNoeudArbreBinaire(info);
     else
     {
         if(info < racine-> info)

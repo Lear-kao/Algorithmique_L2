@@ -124,11 +124,11 @@ arbre_bin *supp( arbre_bin *root, int x)
     }
     if( x < root->info )
     {
-        return supp( root->left, x )
+        return supp( root->left, x );
     }
     else if( x > root->info )
     {
-        return( root->right, x );
+        return supp( root->right, x );
     }
     if( root -> left == NULL )
     {

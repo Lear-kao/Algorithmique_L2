@@ -82,7 +82,7 @@ void saisie_dEnfant( int n,  link *fils )
             int e;
             scanf("%d",&e);
             //on stocke e
-            temp = creer_noeud(e);
+            temp = creerNoeudArbreQuelquonque(e);
             //attacher les  enfants à temp et temp à la tête
             temp->next = fils[i];
             fils[i] = temp;
