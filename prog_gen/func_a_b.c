@@ -17,10 +17,11 @@ Affiche un bst
 {
     if( r!= NULL )
     {
-    imprimer_arbre( r->right, niveau+1);
-    for(int i = 0; i < niveau; i++) printf("   ");
-    printf("%d\n", r->info);
-    imprimer_arbre(r->left, niveau + 1);
+        imprimer_arbre( r->right, niveau+1);
+        for(int i = 0; i < niveau; i++)
+            printf("   ");
+        printf("%d\n", r->info);
+        imprimer_arbre(r->left, niveau + 1);
     }
 }
 
@@ -39,4 +40,129 @@ inserer une feuille dans un bst
             racine -> right = insertion(racine->right, info);
     }
     return racine;
+}
+
+
+/* 
+Exercice:
+Ecrire une fonction non récursive permettant d'afficher
+les noeuds d'un arbre binaire dans l'ordre préfixe, infixe, postfixe.
+*/
+//version récursive
+void prefixe( arbre_bin *racine)
+{
+    if (racine != NULL)
+    {
+        printf("%d ",racine->info);
+        prefixe(racine->left);
+        prefixe(racine->right);
+    }
+}
+
+/*
+Algo:
+push la racine
+Entrer dans la boucle
+tant que la  pile != vide
+    pop(la  pile)
+    et écrire la valeur retournée
+    push(enfant droit)
+    push( enfant  gauche )
+
+Pile:
+On va utiliser une pile pour afficher les  element un par un dès la première rencontre
+*/
+
+arbre_bin *pop(pile *p)
+{
+    if(p->top == 0) return NULL;
+    return p->t[p->top--];
+}
+void push( pile *p, arbre_bin* ptr)
+{
+    if(p->top==N-1)
+    {
+        printf("pile pleine\n");
+        return;
+    }
+    p->t[++p->top] = ptr;
+}
+
+void prefixeIte( arbre_bin *a)
+{
+    arbre_bin *courant;
+    pile p;
+    p.top = 0;
+    courant = a;
+    if (courant != NULL)
+    {
+        push(&p,courant);
+    }
+    while( p.top !=  0)
+    {
+        courant = pop(&p);
+        printf("%d-",courant->info);
+        if (courant->right != NULL)
+        {
+            push(&p,courant->right);
+        }
+        if (courant->left != NULL)
+        {
+            push(&p,courant->left);
+        }
+    }
+}
+
+void infixe( arbre_bin *racine)
+{
+    if (racine != NULL)
+    {
+        prefixe(racine->left);
+        printf("%d ",racine->info);
+        prefixe(racine->right);
+    }
+}
+
+void  infixeIte(arbre_bin *a)
+{
+    arbre_bin *courant = a;
+    pile p;
+    p.top = 0;
+    while (courant != NULL || p.top != 0 )
+    {
+        while( courant != NULL){
+            push(&p,courant);
+            courant = courant->left;
+        }
+        courant = pop(&p);
+        printf("%d-",courant->info);
+        courant = courant->right;
+    }
+
+}
+
+void postfixeIte( arbre_bin *a)
+{
+    arbre_bin *courant;
+    pile p;
+    p.top = 0;
+    courant = a;
+    if (courant != NULL)
+    {
+        push(&p,courant);
+    }
+    while( p.top !=  0)
+    {
+        printf("%d-",courant->info);
+        if (courant->right != NULL)
+        {
+            push(&p,courant->right);
+        }
+        if (courant->left != NULL)
+        {
+            push(&p,courant->left);
+        }
+
+        courant = pop(&p);
+    }
 }

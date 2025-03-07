@@ -42,10 +42,10 @@ arbre_bin *creerNoeudArbreBinaire(int info)
 
 int max_t(arbre_bin *a)
 {
-    if (a->left == NULL) return a->right;
-    if (a->right == NULL) return a->left;
-    if( a->right > a->left ) return a->right;
-    return a->left;
+    if (a->left == NULL) return a->right->info;
+    if (a->right == NULL) return a->left->info;
+    if( a->right->info > a->left->info ) return a->right->info;
+    return a->left->info;
 }
 
 
@@ -54,20 +54,21 @@ arbre_bin *tournoi(int *tab, int g,int d)
 Transformer le tableau T en un tournoi binaire
 */
 {
-    printf("ok");
     int m = (g+d)/2; // *Divide*
     arbre_bin *p = creerNoeudArbreBinaire(tab[m]);
     if( g==d ) return p;
     p->left = tournoi(tab,g,m);
-    p->right = tournoi(tab,m,d);
+    p->right = tournoi(tab,m+1,d);
     p->info = max_t(p);
     return p;
 }
+
 
 int main( void )
 {
     int t[8] = {13,3,6,9,12,4,7,1};
     arbre_bin *a = tournoi(t,0,7);
     imprimer_arbre(a,4);
+    postfixeIte(a);
     return 0;
 }
