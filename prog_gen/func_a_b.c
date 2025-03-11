@@ -143,26 +143,31 @@ void  infixeIte(arbre_bin *a)
 
 void postfixeIte( arbre_bin *a)
 {
-    arbre_bin *courant;
-    pile p;
-    p.top = 0;
-    courant = a;
-    if (courant != NULL)
+    pile *p1 = malloc(sizeof(pile));
+    pile *p2 = malloc(sizeof(pile));
+    arbre_bin *courant = a;
+    p1->top = 0;
+    p2->top = 0;
+    push(p1,courant);
+    while( p1->top != 0 )
     {
-        push(&p,courant);
+        courant = pop(p1);
+        push(p2,courant);
+        if( courant->left != NULL) push(p1,courant->left);
+        if( courant->right != NULL) push(p1,courant->right);
     }
-    while( p.top !=  0)
+    while(p2->top != 0)
     {
-        printf("%d-",courant->info);
-        if (courant->right != NULL)
-        {
-            push(&p,courant->right);
-        }
-        if (courant->left != NULL)
-        {
-            push(&p,courant->left);
-        }
+        arbre_bin *temp = pop(p2);
+        printf("%d - ",temp->info);
+    }
+}
 
-        courant = pop(&p);
+int testTheta(int* tab, int n)
+{
+    for(int i = 0; i < n/2; i++)
+    {
+        if(tab[i] < tab[i*2] || tab[i] < tab[2*i+1]) return 0;
     }
+    return 1;    
 }

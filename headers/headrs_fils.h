@@ -49,6 +49,7 @@ arbre_bin *search(arbre_bin *root, int data);
 void prefixeIte( arbre_bin *a);
 void  infixeIte(arbre_bin *a);
 void postfixeIte( arbre_bin *a);
+int testTheta(int* tab, int n);
 
 
 //main

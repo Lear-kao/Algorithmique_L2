@@ -67,8 +67,12 @@ Transformer le tableau T en un tournoi binaire
 int main( void )
 {
     int t[8] = {13,3,6,9,12,4,7,1};
+    int t2[8] = {54,53,52,51,49,48,47,46};
     arbre_bin *a = tournoi(t,0,7);
     imprimer_arbre(a,4);
     postfixeIte(a);
+    printf("\n");
+    printf("%d\n",testTheta(t2,8));
     return 0;
 }
+
