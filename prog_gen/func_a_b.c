@@ -182,7 +182,7 @@ le papa de l'indice i-i/2
 */
 {
     t[i] = t[i] + valeur;
-    while(!testEstTas(t,n))
+    while( i>0 && !testEstTas(t,n) )
     {
         int temp = t[i];
         t[i] = t[i-i/2];
@@ -191,7 +191,39 @@ le papa de l'indice i-i/2
     }
 }
 
-void descendre_tas(int *t,int n)
+void descendre_tas(int *t,int n, int i)
+/* 
+Input: un tableau d'entier
+Output: un tableau trié
+FCT TRIS PAR TAS
+*/
 {
+    int x = t[i];
+    int j = i*2;
+    while (j < n)
+    {
+        if(j+1 < n)
+        {
+            if( t[j+1] > t[j] ) j = j+1;
+        }
+        if ( x >= t[j] ) break;
+        t[i] = t[j];
+        i = j;
+        j = 2*i;
+    }
+    t[i] = x;
     
+}
+
+void tri_par_tas(int *t, int n)
+{
+    int temp, k = n-1;
+    for(int i =  n-1;i >= 1; i--)
+    {
+        temp = t[i];
+        t[i] = t[1];
+        t[1] = temp;
+        descendre_tas(t,k,1);
+        k = k-1;
+    }
 }

@@ -66,13 +66,29 @@ Transformer le tableau T en un tournoi binaire
 
 int main( void )
 {
-    int t[8] = {13,3,6,9,12,4,7,1};
+    int f[9] = {1000,4,3,1,2,7,3,10,17};
+    int n = sizeof(f)/sizeof(f[0]);
+    for(int i = n/2; i >= 1; i--)
+    {
+        descendre_tas(f,n,i);
+    }
+    for( int i=1; i < n; i++)
+    {
+        printf(" %d",f[i]);
+    }
+    tri_par_tas(f,n);
+    printf("\n");
+    for( int i=1; i < n; i++)
+    {
+        printf(" %d",f[i]);
+    }
+    /* int t[8] = {13,3,6,9,12,4,7,1};
     int t2[8] = {54,53,52,51,49,48,47,46};
     arbre_bin *a = tournoi(t,0,7);
     imprimer_arbre(a,4);
     postfixeIte(a);
     printf("\n");
-    printf("%d\n",testTheta(t2,8));
+    printf("%d\n",testTheta(t2,8)); */
     return 0;
 }
 

@@ -50,6 +50,8 @@ void prefixeIte( arbre_bin *a);
 void  infixeIte(arbre_bin *a);
 void postfixeIte( arbre_bin *a);
 int testTheta(int* tab, int n);
+void descendre_tas(int *t,int n, int i);
+void tri_par_tas(int *t, int n);
 
 
 //main
