@@ -163,11 +163,35 @@ void postfixeIte( arbre_bin *a)
     }
 }
 
-int testTheta(int* tab, int n)
+int testEstTas(int* tab, int n)
 {
     for(int i = 0; i < n/2; i++)
     {
         if(tab[i] < tab[i*2] || tab[i] < tab[2*i+1]) return 0;
     }
     return 1;    
+}
+
+
+void monter_tas(int *t,int n, int i,int valeur)
+/* 
+t[i...n-1]un tas
+on augmente  t[i] = t[i]+val
+restructurer le tas
+le papa de l'indice i-i/2
+*/
+{
+    t[i] = t[i] + valeur;
+    while(!testEstTas(t,n))
+    {
+        int temp = t[i];
+        t[i] = t[i-i/2];
+        t[i-i/2] = temp;
+        i = i-i/2;
+    }
+}
+
+void descendre_tas(int *t,int n)
+{
+    
 }
