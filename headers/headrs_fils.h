@@ -28,6 +28,17 @@ typedef struct pile
 
 }pile;
 
+typedef struct QueueNode
+{
+    arbre_bin *ptr;
+    struct QueueNode *next;
+} Qnode;
+
+typedef struct Queue
+{
+    Qnode *front, *rear;
+}Queue;
+
 //fonction générale tab enfant
 link enfiler(link *head, link *tail,int i);
 int defiler(link *head, link *tail);
