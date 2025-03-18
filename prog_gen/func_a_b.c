@@ -227,3 +227,45 @@ void tri_par_tas(int *t, int n)
         k = k-1;
     }
 }
+
+/* 
+Algo: BFS pour un arbre binaire 
+*/
+
+Queue *creer()
+{
+    Queue *t = (Qnode*)malloc(sizeof(Qnode));
+    t->front = t->rear = NULL;
+}
+
+int isempty(Queue *q)
+{
+    return a->front == NULL;
+}
+
+void enqueue(Queue *q, arbre_bin *tptr)
+{
+    Qnode *t =  (Qnode*)malloc(sizeof(Qnode));
+    t->ptr = tptr;
+    t->next = NULL;
+    if(isempty(q))
+    {
+        q->front = q->rear  = t;
+    }
+}
+
+arbre_bin dequeue(Queue *q)
+{
+    if(isempty(q))
+    {
+        return NULL;
+    }
+    Qnode *t = q->front;
+    q->front = q->front->next;
+    if( isempty(q) )
+    {
+        q->rear = NULL;
+    }
+    free(t);
+    return p
+}
