@@ -82,6 +82,8 @@ int main( void )
     {
         printf(" %d",f[i]);
     }
+    arbre_bin *a = tournoi(f,0,7);
+    bfs_arb_bin(a);
     /* int t[8] = {13,3,6,9,12,4,7,1};
     int t2[8] = {54,53,52,51,49,48,47,46};
     arbre_bin *a = tournoi(t,0,7);

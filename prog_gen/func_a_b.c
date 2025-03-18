@@ -269,3 +269,29 @@ arbre_bin dequeue(Queue *q)
     free(t);
     return p
 }
+
+
+void bfs_arb_bin( arbre_bin *a)
+{
+    arbre_bin *courant;
+    Queue p;
+    p.front = 0;
+    courant = a;
+    if (courant != NULL)
+    {
+        enqueue(&p,courant);
+    }
+    while( isempty(&p))
+    {
+        courant = dequeue(&p);
+        printf("%d-",courant->info);
+        if (courant->left != NULL)
+        {
+            enqueue(&p,courant->left);
+        }
+        if (courant->right != NULL)
+        {
+            enqueue(&p,courant->right);
+        }
+    }
+}
