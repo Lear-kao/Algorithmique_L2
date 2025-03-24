@@ -234,13 +234,13 @@ Algo: BFS pour un arbre binaire
 
 Queue *creer()
 {
-    Queue *t = (Qnode*)malloc(sizeof(Qnode));
+    Queue *t = (Queue*)malloc(sizeof(Qnode));
     t->front = t->rear = NULL;
 }
 
 int isempty(Queue *q)
 {
-    return a->front == NULL;
+    return q->front == NULL;
 }
 
 void enqueue(Queue *q, arbre_bin *tptr)
@@ -251,47 +251,46 @@ void enqueue(Queue *q, arbre_bin *tptr)
     if(isempty(q))
     {
         q->front = q->rear  = t;
+        return;
     }
+    q->rear->next = t;
+    q->rear = t;
 }
 
-arbre_bin dequeue(Queue *q)
+arbre_bin* dequeue(Queue *q)
 {
     if(isempty(q))
     {
-        return NULL;
+        exit(10);
     }
     Qnode *t = q->front;
+    arbre_bin *p = t->ptr;
     q->front = q->front->next;
     if( isempty(q) )
     {
         q->rear = NULL;
     }
     free(t);
-    return p
+    return p;
 }
 
 
 void bfs_arb_bin( arbre_bin *a)
 {
     arbre_bin *courant;
-    Queue p;
-    p.front = 0;
-    courant = a;
-    if (courant != NULL)
+    Queue *p = creer();
+    enqueue(p,a);
+    while( !isempty(p))
     {
-        enqueue(&p,courant);
-    }
-    while( isempty(&p))
-    {
-        courant = dequeue(&p);
+        courant = dequeue(p);
         printf("%d-",courant->info);
         if (courant->left != NULL)
         {
-            enqueue(&p,courant->left);
+            enqueue(p,courant->left);
         }
         if (courant->right != NULL)
         {
-            enqueue(&p,courant->right);
+            enqueue(p,courant->right);
         }
     }
 }
