@@ -1,0 +1,158 @@
+Voici une fiche de révision complète sur les **arbres quelconques** (ou arbres généraux) de niveau **Licence 2 en informatique**, couvrant les **définitions**, **types de parcours**, et **traitements logiques** associés, avec **algorithmes** (mais sans code).
+
+---
+
+## 🌳 **1. Arbres quelconques – Définitions générales**
+
+### ✅ Définition :
+Un **arbre quelconque** (ou arbre général) est une structure de données hiérarchique :
+- Un **nœud racine**
+- Chaque nœud peut avoir **0 ou plusieurs enfants**
+- Il n’y a **pas de cycles** (structure arborescente)
+
+### 🧩 Propriétés :
+- **Nœud** : élément de l’arbre contenant une valeur et des pointeurs vers ses enfants
+- **Racine** : nœud unique sans parent
+- **Feuille** : nœud sans enfants
+- **Hauteur d’un nœud** : distance maximale jusqu’à une feuille
+- **Profondeur d’un nœud** : distance jusqu’à la racine
+
+---
+
+## 🔁 **2. Représentation d’un arbre**
+
+### 🔸 Liste des enfants
+Chaque nœud stocke une **liste (ou tableau)** de ses enfants.
+
+### 🔸 Premier enfant / frère suivant (left-child right-sibling)
+- Chaque nœud pointe vers :
+  - Son **premier enfant**
+  - Son **frère suivant**
+- Permet de représenter un arbre quelconque comme un **arbre binaire**
+
+---
+
+## 👣 **3. Parcours d’un arbre quelconque**
+
+Les parcours visitent tous les nœuds selon un ordre défini.
+
+---
+
+### **3.1. Parcours en profondeur (Depth-First Search, DFS)**
+
+#### A. **Préordre (Root-Left-Right)**  
+- Visiter le nœud courant
+- Pour chaque enfant :
+  - Parcourir en préordre
+
+**Algorithme (DFS Préordre)**  
+```
+Visiter(nœud)
+pour chaque enfant de nœud :
+    Appeler récursivement Visiter(enfant)
+```
+
+#### B. **Postordre (Left-Right-Root)**  
+- Pour chaque enfant :
+  - Parcourir en postordre
+- Visiter le nœud courant
+
+**Algorithme (DFS Postordre)**  
+```
+pour chaque enfant de nœud :
+    Appeler récursivement Visiter(enfant)
+Visiter(nœud)
+```
+
+---
+
+### **3.2. Parcours en largeur (Breadth-First Search, BFS)**
+
+- Utilise une **file (queue)**
+- Commence à la racine
+- Visite tous les nœuds de même niveau avant d’aller plus loin
+
+**Algorithme (BFS)**  
+```
+Créer une file vide
+Enfiler la racine
+
+Tant que la file n’est pas vide :
+    Défile le premier nœud
+    Visite le nœud
+    Enfile tous ses enfants
+```
+
+---
+
+## 🧠 **4. Traitements logiques classiques**
+
+### 🧮 A. Calcul de la hauteur de l’arbre
+- Hauteur = 1 + max(hauteur des enfants)
+```
+fonction hauteur(nœud) :
+    si nœud est une feuille :
+        retourner 0
+    sinon :
+        retourner 1 + max(hauteur(enfant_i) pour chaque enfant)
+```
+
+---
+
+### 🔍 B. Recherche d’un élément
+- DFS ou BFS
+- Tester la valeur de chaque nœud visité
+
+---
+
+### 🧾 C. Comptage du nombre de feuilles
+```
+si nœud n’a pas d’enfants :
+    retourner 1
+sinon :
+    retourner somme des feuilles de tous les enfants
+```
+
+---
+
+### ➕ D. Somme des valeurs (si les nœuds contiennent des nombres)
+```
+somme = valeur du nœud
+pour chaque enfant :
+    somme += somme(enfant)
+retourner somme
+```
+
+---
+
+### 🧬 E. Clonage (copie profonde)
+- Créer un nouveau nœud avec même valeur
+- Reproduire récursivement la structure sur les enfants
+
+---
+
+### 🔄 F. Parcours avec accumulation (fold/map)
+- On applique une fonction à chaque nœud (transformation ou agrégation)
+
+---
+
+## 🧱 **5. Utilisations typiques**
+
+- Arborescences de fichiers
+- Structures XML/JSON
+- Hiérarchies d’organisation (entreprise, jeux vidéo)
+- Compilateurs (arbres de syntaxe abstraite)
+
+---
+
+## 📝 À retenir
+
+| Parcours      | Ordre de visite       | Utilité principale                    |
+|---------------|------------------------|----------------------------------------|
+| **Préordre**  | Nœud → Enfants         | Affichage, export, clonage             |
+| **Postordre** | Enfants → Nœud         | Libération mémoire, traitements post  |
+| **Largeur**   | Niveau par niveau      | Trouver le plus proche, navigation     |
+
+---
+
+Si tu veux, je peux t’ajouter un schéma récapitulatif ou une fiche PDF avec des exemples. Tu veux ça ?
