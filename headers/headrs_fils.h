@@ -65,6 +65,7 @@ void descendre_tas(int *t,int n, int i);
 void tri_par_tas(int *t, int n);
 void bfs_arb_bin( arbre_bin *a);
 
+
 //main
 int main( void  );
 
